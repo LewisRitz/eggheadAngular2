@@ -21,8 +21,13 @@ export var HomeComponent = (function () {
         this.container.createComponent(widgetFactory);
         this.container.createComponent(widgetFactory);
         this.container.createComponent(widgetFactory);
-        var widgetRef = this.container.createComponent(widgetFactory);
-        widgetRef.instance.message = "I'm last!";
+        var widgetRef = this.container.createComponent(widgetFactory, 2);
+        widgetRef.instance.message = "I'm third";
+    };
+    HomeComponent.prototype.onClick = function () {
+        var widgetFactory = this.resolver.resolveComponentFactory(WidgetThree);
+        var widgetRef = this.container.createComponent(widgetFactory, 3);
+        widgetRef.instance.message = "I'm fourth";
     };
     __decorate([
         ViewChild('container', { read: ViewContainerRef }), 
@@ -31,7 +36,7 @@ export var HomeComponent = (function () {
     HomeComponent = __decorate([
         Component({
             selector: 'home',
-            template: "\n    <div #container></div>\n  "
+            template: "\n    <button (click)=\"onClick()\">Add Component</button>\n    <div #container></div>\n  "
         }), 
         __metadata('design:paramtypes', [ComponentFactoryResolver])
     ], HomeComponent);
