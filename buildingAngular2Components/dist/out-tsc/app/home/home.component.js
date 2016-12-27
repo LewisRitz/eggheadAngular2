@@ -16,7 +16,7 @@ export var HomeComponent = (function () {
     HomeComponent = __decorate([
         Component({
             selector: 'home',
-            template: "\n    <!--<div>I'm a Home component</div>-->\n    <!--<div>{{simpleService.message}}</div>-->\n    <widget-two>\n      <widget-one [message]=\"simpleService.message\"></widget-one>\n    </widget-two>\n    <widget-two>\n      Some other content\n    </widget-two>\n    <!--<widget-one [message]=\"simpleService.message\"></widget-one>-->\n  "
+            template: "\n    <widget-two>\n      <div content>Some content</div>\n      <h2 class=\"header\">Title</h2>\n      <h3 footer>Footer</h3>\n      <!--<widget-one [message]=\"simpleService.message\"></widget-one>-->\n    </widget-two>\n  "
         }), 
         __metadata('design:paramtypes', [SimpleService])
     ], HomeComponent);

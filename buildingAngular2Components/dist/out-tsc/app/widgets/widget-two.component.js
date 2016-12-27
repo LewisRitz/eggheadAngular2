@@ -15,7 +15,7 @@ export var WidgetTwo = (function () {
         Component({
             selector: 'widget-two',
             styles: ["\n    :host{\n      display: block;\n      border: 3px solid red;\n    }\n  "],
-            template: "\n    <h2>Above</h2>\n    <ng-content></ng-content>\n    <h2>Below</h2>\n  "
+            template: "\n    <h2>Above</h2>\n    <ng-content select=\".header\"></ng-content>\n    <ng-content select=\"[content]\"></ng-content>\n    <ng-content select=\"[footer]\"></ng-content>\n    <h2>Below</h2>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], WidgetTwo);
