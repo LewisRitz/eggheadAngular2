@@ -25,18 +25,20 @@ export var HomeComponent = (function () {
         this.widgetRef.instance.message = "I'm third";
     };
     HomeComponent.prototype.onClick = function () {
-        var randomIndex = Math.floor(Math.random() * this.container.length);
-        this.container.move(this.widgetRef.hostView, randomIndex);
-        // this.container.detach(2); // removes it
+        this.container.createEmbeddedView(this.template);
     };
     __decorate([
         ViewChild('container', { read: ViewContainerRef }), 
         __metadata('design:type', Object)
     ], HomeComponent.prototype, "container", void 0);
+    __decorate([
+        ViewChild('template'), 
+        __metadata('design:type', Object)
+    ], HomeComponent.prototype, "template", void 0);
     HomeComponent = __decorate([
         Component({
             selector: 'home',
-            template: "\n    <button (click)=\"onClick()\">Move Component</button>\n    <div #container></div>\n  "
+            template: "\n    <button (click)=\"onClick()\">Create Template</button>\n    <div #container></div>\n    \n    <template #template>\n      <h2>My Amazing Template</h2>\n      <button>My amazing button</button>\n    </template>\n  "
         }), 
         __metadata('design:paramtypes', [ComponentFactoryResolver])
     ], HomeComponent);
