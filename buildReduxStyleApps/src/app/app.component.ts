@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {Store} from '@ngrx/store';
+import {SECOND, HOUR} from './../reducers'
 
 
 @Component({
@@ -20,11 +21,11 @@ export class AppComponent {
     this.clock = store.select('clock');
 
     Observable.merge(
-      this.click$.mapTo('hour'),
-      Observable.interval(1000).mapTo('second')
+      this.click$.mapTo({type: HOUR, payload:3}),
+      Observable.interval(1000).mapTo({type: SECOND, payload: 1})
     )
-      .subscribe((type)=>{
-        store.dispatch({type})
+      .subscribe((action)=>{
+        store.dispatch(action)
       })
   }
 }
