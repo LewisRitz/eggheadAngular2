@@ -18,7 +18,15 @@ export class AppComponent {
   constructor(){
     this.clock = Observable.merge(
       this.click$,
-      Observable.interval(5000)
-    ).map(() => new Date());
+      Observable.interval(1000)
+    )
+      .startWith(new Date())
+      .scan((acc, curr) => {
+        const date = new Date(acc.toString());
+
+        date.setSeconds(date.getSeconds() + 1);
+
+        return date;
+      });
   }
 }
