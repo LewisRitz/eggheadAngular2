@@ -25,7 +25,9 @@ export var HomeComponent = (function () {
         this.widgetRef.instance.message = "I'm third";
     };
     HomeComponent.prototype.onClick = function () {
-        this.container.createEmbeddedView(this.template);
+        this.container.createEmbeddedView(this.template, {
+            description: 'sweet'
+        });
     };
     __decorate([
         ViewChild('container', { read: ViewContainerRef }), 
@@ -38,7 +40,7 @@ export var HomeComponent = (function () {
     HomeComponent = __decorate([
         Component({
             selector: 'home',
-            template: "\n    <button (click)=\"onClick()\">Create Template</button>\n    <div #container></div>\n    \n    <template #template>\n      <h2>My Amazing Template</h2>\n      <button>My amazing button</button>\n    </template>\n  "
+            template: "\n    <button (click)=\"onClick()\">Create Template</button>\n    <div #container></div>\n    \n    <template #template let-description=\"description\">\n      <h2>My {{description}} Template</h2>\n      <button>My {{description}} button</button>\n    </template>\n  "
         }), 
         __metadata('design:paramtypes', [ComponentFactoryResolver])
     ], HomeComponent);
