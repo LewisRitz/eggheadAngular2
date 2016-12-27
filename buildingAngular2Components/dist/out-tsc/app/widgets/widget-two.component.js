@@ -14,7 +14,8 @@ export var WidgetTwo = (function () {
     WidgetTwo = __decorate([
         Component({
             selector: 'widget-two',
-            template: "\n    <div>Two</div>\n  "
+            styles: ["\n    :host{\n      display: block;\n      border: 3px solid red;\n    }\n  "],
+            template: "\n    <h2>Above</h2>\n    <ng-content></ng-content>\n    <h2>Below</h2>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], WidgetTwo);

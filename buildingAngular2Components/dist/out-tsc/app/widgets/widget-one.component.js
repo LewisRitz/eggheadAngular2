@@ -7,14 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 export var WidgetOne = (function () {
     function WidgetOne() {
     }
+    __decorate([
+        Input(), 
+        __metadata('design:type', Object)
+    ], WidgetOne.prototype, "message", void 0);
     WidgetOne = __decorate([
         Component({
             selector: 'widget-one',
-            template: "\n    <div>One</div>\n  "
+            styles: ["\n    :host{\n      font-family: \"Times New Roman\";\n      display: block;\n      border: 3px dashed black;\n    }\n  "],
+            template: "\n    <h2>One's message:</h2>\n    <h3>{{message}}</h3>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], WidgetOne);
