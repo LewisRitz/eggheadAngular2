@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Observable, Subject} from "rxjs";
+import {Store} from '@ngrx/store';
 
 
 @Component({
@@ -15,18 +16,15 @@ export class AppComponent {
 
   clock;
 
-  constructor(){
-    this.clock = Observable.merge(
-      this.click$,
-      Observable.interval(1000)
+  constructor(store:Store<any>){
+    this.clock = store.select('clock');
+
+    Observable.merge(
+      this.click$.mapTo('hour'),
+      Observable.interval(1000).mapTo('second')
     )
-      .startWith(new Date())
-      .scan((acc, curr) => {
-        const date = new Date(acc.toString());
-
-        date.setSeconds(date.getSeconds() + 1);
-
-        return date;
-      });
+      .subscribe((type)=>{
+        store.dispatch({type})
+      })
   }
 }
