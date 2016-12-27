@@ -6,10 +6,11 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import {clock} from "./../reducers";
+import { Clock } from './clock.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, Clock
   ],
   imports: [
     BrowserModule,
