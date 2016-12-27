@@ -16,6 +16,13 @@ export var HomeComponent = (function () {
     HomeComponent.prototype.ngAfterContentInit = function () {
         var widgetFactory = this.resolver.resolveComponentFactory(WidgetThree);
         this.container.createComponent(widgetFactory);
+        this.container.createComponent(widgetFactory);
+        this.container.createComponent(widgetFactory);
+        this.container.createComponent(widgetFactory);
+        this.container.createComponent(widgetFactory);
+        this.container.createComponent(widgetFactory);
+        var widgetRef = this.container.createComponent(widgetFactory);
+        widgetRef.instance.message = "I'm last!";
     };
     __decorate([
         ViewChild('container', { read: ViewContainerRef }), 

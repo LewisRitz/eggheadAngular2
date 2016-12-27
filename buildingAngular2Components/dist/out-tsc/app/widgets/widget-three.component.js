@@ -7,10 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, ViewChild, Renderer } from "@angular/core";
+import { Component, ViewChild, Renderer, Input } from "@angular/core";
 export var WidgetThree = (function () {
     function WidgetThree(renderer) {
         this.renderer = renderer;
+        this.message = "default value!";
     }
     WidgetThree.prototype.ngAfterViewInit = function () {
         // this.input.nativeElement.focus(); // not the best way to do this
@@ -21,10 +22,14 @@ export var WidgetThree = (function () {
         ViewChild('input'), 
         __metadata('design:type', Object)
     ], WidgetThree.prototype, "input", void 0);
+    __decorate([
+        Input(), 
+        __metadata('design:type', Object)
+    ], WidgetThree.prototype, "message", void 0);
     WidgetThree = __decorate([
         Component({
             selector: 'widget-three',
-            template: "\n    <input #input type=\"text\">\n  "
+            template: "\n    <input #input type=\"text\" [value]=\"message\">\n  "
         }), 
         __metadata('design:paramtypes', [Renderer])
     ], WidgetThree);
