@@ -4,12 +4,14 @@ import {WidgetThree} from "../widgets/widget-three.component";
 @Component({
   selector: 'home',
   template: `
-    <button (click)="onClick()">Add Component</button>
+    <button (click)="onClick()">Move Component</button>
     <div #container></div>
   `
 })
 export class HomeComponent{
   @ViewChild('container', {read:ViewContainerRef}) container;
+
+  widgetRef;
 
   constructor(private resolver:ComponentFactoryResolver){}
 
@@ -21,15 +23,14 @@ export class HomeComponent{
     this.container.createComponent(widgetFactory);
     this.container.createComponent(widgetFactory);
     this.container.createComponent(widgetFactory);
-    const widgetRef = this.container.createComponent(widgetFactory, 2);
+    this.widgetRef = this.container.createComponent(widgetFactory, 2);
 
-    widgetRef.instance.message = "I'm third";
+    this.widgetRef.instance.message = "I'm third";
   }
 
   onClick(){
-    const widgetFactory = this.resolver.resolveComponentFactory(WidgetThree);
-    const widgetRef = this.container.createComponent(widgetFactory, 3);
-
-    widgetRef.instance.message = "I'm fourth";
+    const randomIndex = Math.floor(Math.random() * this.container.length);
+    this.container.move(this.widgetRef.hostView, randomIndex)
+    // this.container.detach(2); // removes it
   }
 }

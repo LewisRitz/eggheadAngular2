@@ -21,13 +21,13 @@ export var HomeComponent = (function () {
         this.container.createComponent(widgetFactory);
         this.container.createComponent(widgetFactory);
         this.container.createComponent(widgetFactory);
-        var widgetRef = this.container.createComponent(widgetFactory, 2);
-        widgetRef.instance.message = "I'm third";
+        this.widgetRef = this.container.createComponent(widgetFactory, 2);
+        this.widgetRef.instance.message = "I'm third";
     };
     HomeComponent.prototype.onClick = function () {
-        var widgetFactory = this.resolver.resolveComponentFactory(WidgetThree);
-        var widgetRef = this.container.createComponent(widgetFactory, 3);
-        widgetRef.instance.message = "I'm fourth";
+        var randomIndex = Math.floor(Math.random() * this.container.length);
+        this.container.move(this.widgetRef.hostView, randomIndex);
+        // this.container.detach(2); // removes it
     };
     __decorate([
         ViewChild('container', { read: ViewContainerRef }), 
@@ -36,7 +36,7 @@ export var HomeComponent = (function () {
     HomeComponent = __decorate([
         Component({
             selector: 'home',
-            template: "\n    <button (click)=\"onClick()\">Add Component</button>\n    <div #container></div>\n  "
+            template: "\n    <button (click)=\"onClick()\">Move Component</button>\n    <div #container></div>\n  "
         }), 
         __metadata('design:paramtypes', [ComponentFactoryResolver])
     ], HomeComponent);
