@@ -19,6 +19,7 @@ export var WidgetModule = (function () {
         NgModule({
             imports: [CommonModule],
             declarations: [WidgetOne, WidgetTwo, WidgetThree],
+            entryComponents: [WidgetThree],
             exports: [WidgetOne, WidgetTwo, WidgetThree, CommonModule]
         }), 
         __metadata('design:paramtypes', [])

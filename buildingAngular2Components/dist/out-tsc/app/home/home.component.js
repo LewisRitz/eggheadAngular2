@@ -7,18 +7,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from "@angular/core";
-import { SimpleService } from "../services/services.module";
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
+import { WidgetThree } from "../widgets/widget-three.component";
 export var HomeComponent = (function () {
-    function HomeComponent(simpleService) {
-        this.simpleService = simpleService;
+    function HomeComponent(resolver) {
+        this.resolver = resolver;
     }
+    HomeComponent.prototype.ngAfterContentInit = function () {
+        var widgetFactory = this.resolver.resolveComponentFactory(WidgetThree);
+        this.container.createComponent(widgetFactory);
+    };
+    __decorate([
+        ViewChild('container', { read: ViewContainerRef }), 
+        __metadata('design:type', Object)
+    ], HomeComponent.prototype, "container", void 0);
     HomeComponent = __decorate([
         Component({
             selector: 'home',
-            template: "\n    <widget-three></widget-three>\n  "
+            template: "\n    <div #container></div>\n  "
         }), 
-        __metadata('design:paramtypes', [SimpleService])
+        __metadata('design:paramtypes', [ComponentFactoryResolver])
     ], HomeComponent);
     return HomeComponent;
 }());
